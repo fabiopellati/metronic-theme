@@ -19,7 +19,7 @@ return [
         /**
          * controller che implementa MetronicTheme\NavigationControllerInterface
          */
-        'navigation_controller'=>''
+        'elements_controller'=>''
     ],
 
 

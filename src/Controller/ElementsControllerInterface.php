@@ -8,7 +8,7 @@
 
 namespace MetronicTheme\Controller;
 
-interface NavigationControllerInterface
+interface ElementsControllerInterface
 {
     /**
      * @return mixed
@@ -33,4 +33,10 @@ interface NavigationControllerInterface
      * @return mixed
      */
     public function quickSidebarAction();
+
+    /**
+     * restituisce il widget per la costruzione del logo
+     * @return mixed
+     */
+    public function logoAction();
 }

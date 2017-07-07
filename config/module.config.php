@@ -2,10 +2,11 @@
 
 namespace MetronicTheme;
 
-use MetronicTheme\Controller\NavigationController;
+use MetronicTheme\Controller\LayoutController;
+use MetronicTheme\Controller\ElementsController;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
-$theme = 'metronic/admin_1';
+$theme = 'metronic-theme/admin_1';
 
 return [
     /**
@@ -16,21 +17,21 @@ return [
             'assets' => [
                 'type' => 'Zend\Router\Http\Literal',
                 'options' => [
-                    'route' => '',
+                    'route' => '/',
                 ],
             ]
         ]
     ],
     'controllers' => [
         'factories' => [
-            NavigationController::class => InvokableFactory::class,
+            ElementsController::class => InvokableFactory::class,
         ],
     ],
     'metronic-theme' => [
         /**
-         * controller che implementa MetronicTheme\NavigationControllerInterface
+         * controller che implementa MetronicTheme\ElementsControllerInterface
          */
-        'navigation_controller' => NavigationController::class
+        'elements_controller' => ElementsController::class,
     ],
 
     'view_manager' => [
@@ -49,7 +50,7 @@ return [
         ],
         'template_path_stack' => [
             'standard' => __DIR__ . '/../view/',
-            'Theme' => __DIR__ . '/../view/' . $theme,
+//            'Theme' => __DIR__ . '/../view/' . $theme,
         ],
     ],
     'view_helper' => [
@@ -58,7 +59,7 @@ return [
     'asset_manager' => [
         'resolver_configs' => [
             'paths' => [
-                __DIR__ . '/../public/metronic/theme',
+                __DIR__ . '/../public/metronic-theme',
             ],
         ],
     ],

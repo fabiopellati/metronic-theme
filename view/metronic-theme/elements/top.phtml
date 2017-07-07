@@ -334,11 +334,23 @@
             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                data-close-others="true">
                 <img alt="" class="img-circle"
-                     src="<?= $this->url('assets') . 'metronic/theme/assets/layouts/layout/img/avatar3_small.jpg' ?>"/>
-                <span class="username username-hide-on-mobile"> <?php echo $this->userIdentity(); ?> </span>
+                     src="<?= $this->url('assets') .
+                     'assets/layouts/layout/img/avatar3_small.jpg' ?>" />
+
+                <span class="username username-hide-on-mobile">
+                    <?php
+                    $pluginManager = $this->getHelperPluginManager();
+                    if ($pluginManager->has('user-identity')) {
+                        $userIdentity = $pluginManager->get('user-identity');
+
+                        echo $userIdentity();
+                    }
+                    ?>
+
+                </span>
                 <i class="fa fa-angle-down"></i>
             </a>
-            <?php if(false):?>
+            <?php if (false): ?>
                 <ul class="dropdown-menu dropdown-menu-default">
                 <li>
                     <a href="page_user_profile_1.html">
@@ -370,14 +382,21 @@
                         <i class="icon-key"></i> Log Out </a>
                 </li>
             </ul>
-            <?php endif;?>
+            <?php endif; ?>
 
         </li>
         <!-- END USER LOGIN DROPDOWN -->
         <!-- BEGIN QUICK SIDEBAR TOGGLER -->
         <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
         <li class="dropdown dropdown-quick-sidebar-toggler">
-            <a href="<?php echo $this->url('user/logout'); ?>" class="dropdown-toggle">
+            <?php
+            try {
+                $logoutUrl = $this->url('user/logout');
+            } catch (\Exception $e) {
+
+            }
+            ?>
+            <a href="<?php echo $logoutUrl; ?>" class="dropdown-toggle">
                 <i class="icon-logout"></i>
             </a>
         </li>

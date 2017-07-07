@@ -10,7 +10,8 @@ namespace MetronicTheme\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class NavigationController extends AbstractActionController
+class ElementsController extends AbstractActionController
+implements ElementsControllerInterface
 {
     public function mainAction()
     {
@@ -31,6 +32,22 @@ class NavigationController extends AbstractActionController
     public function quickSidebarAction()
     {
         return new ViewModel();
+    }
+
+    public function logoAction()
+    {
+        $logo1='EMPLOYEES';
+        $logo2='EXAMPLE';
+        return new ViewModel(['logo1'=>$logo1,
+                              'logo2'=>$logo2
+                             ]);
+    }
+    public function footerAction()
+    {
+        $date=new \DateTime();
+        $copyright=$date->format('Y'). '&copy; Fabio Pellati';
+        return new ViewModel(['logo1'=>$copyright,
+                             ]);
     }
 
 }

@@ -32,18 +32,22 @@ class Module
             $app = $e->getApplication();
             $config = $app->getServiceManager()->get('config');
             $metronic_theme_config = $config['metronic-theme'];
-            $navigationControllerClass = $metronic_theme_config['navigation_controller'];
+            $elementsControllerClass = $metronic_theme_config['elements_controller'];
             $controller = $e->getTarget();
             $isViewModel = get_class($e->getViewModel()) === ViewModel::class;
-            if ($isViewModel && get_class($controller) != $navigationControllerClass) {
-                $side_bar = $controller->forward()->dispatch($navigationControllerClass, ['action' => 'main']);
+            if ($isViewModel && get_class($controller) != $elementsControllerClass) {
+                $logo = $controller->forward()->dispatch($elementsControllerClass, ['action' => 'logo']);
+                $controller->layout()->addChild($logo, 'logo');
+                $side_bar = $controller->forward()->dispatch($elementsControllerClass, ['action' => 'main']);
                 $controller->layout()->addChild($side_bar, 'main');
-                $side_bar = $controller->forward()->dispatch($navigationControllerClass, ['action' => 'sidebar']);
-                $controller->layout()->addChild($side_bar, 'side_bar');
-                $top_menu = $controller->forward()->dispatch($navigationControllerClass, ['action' => 'top']);
-                $controller->layout()->addChild($top_menu, 'top_menu');
-                $top_menu = $controller->forward()->dispatch($navigationControllerClass, ['action' => 'quickSidebar']);
-                $controller->layout()->addChild($top_menu, 'quick_sidebar');
+                $side_bar = $controller->forward()->dispatch($elementsControllerClass, ['action' => 'sidebar']);
+                $controller->layout()->addChild($side_bar, 'sideBar');
+                $top_menu = $controller->forward()->dispatch($elementsControllerClass, ['action' => 'top']);
+                $controller->layout()->addChild($top_menu, 'topMenu');
+                $quickSidebar = $controller->forward()->dispatch($elementsControllerClass, ['action' => 'quickSidebar']);
+                $controller->layout()->addChild($quickSidebar, 'quickSidebar');
+                $footer = $controller->forward()->dispatch($elementsControllerClass, ['action' => 'footer']);
+                $controller->layout()->addChild($footer, 'footer');
             }
         });
 
@@ -66,7 +70,7 @@ class Module
                 }
                 App.assets = "$assets";
                 App.baseUrl = "$base_path";
-                App.setAssetsPath( App.assets+ "metronic/theme/assets/");
+                App.setAssetsPath( App.assets+ mmetronic-themetheme);
 
 JS;
                 $renderer->plugin('HeadScript')->appendScript($script, 'text/javascript');
