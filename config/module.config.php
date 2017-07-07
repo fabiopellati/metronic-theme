@@ -2,7 +2,6 @@
 
 namespace MetronicTheme;
 
-use MetronicTheme\Controller\LayoutController;
 use MetronicTheme\Controller\ElementsController;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
@@ -17,7 +16,7 @@ return [
             'assets' => [
                 'type' => 'Zend\Router\Http\Literal',
                 'options' => [
-                    'route' => '/',
+                    'route' => '',
                 ],
             ]
         ]
