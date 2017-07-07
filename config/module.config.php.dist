@@ -1,0 +1,26 @@
+<?php
+namespace MetronicTheme;
+
+return [
+
+    'router' => [
+        'routes' => [
+            'assets' => [
+                'type' => 'Zend\Router\Http\Segment',
+                'options' => [
+                    'route' => '/',
+                ],
+            ]
+        ]
+    ],
+
+
+    'metronic-theme'=>[
+        /**
+         * controller che implementa MetronicTheme\NavigationControllerInterface
+         */
+        'navigation_controller'=>''
+    ],
+
+
+];

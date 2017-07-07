@@ -1,0 +1,37 @@
+<div class="alert alert-danger display-hide">
+    <button class="close" data-close="alert"></button>
+    <span> Enter any username and password. </span>
+</div>
+<?php
+$form = $this->loginForm;
+$form->prepare();
+$form->setAttribute('action', $this->url('user/login'));
+$form->setAttribute('method', 'post');
+$form->setAttribute('autocomplete', 'off');
+$form->setAttribute('class', 'login-form');
+
+$form->get('identity')->setAttribute('class', 'form-control form-control-solid placeholder-no-fix');
+$form->get('identity')->setAttribute('id', $form->get('identity')->getName());
+$form->get('identity')->setAttribute('placeholder', $form->get('identity')->getLabel());
+$form->get('credential')->setAttribute('class', 'form-control form-control-solid placeholder-no-fix');
+$form->get('credential')->setAttribute('placeholder', $form->get('credential')->getLabel());
+$form->get('submit')->setAttribute('class', 'btn green uppercase');
+$form->get('submit')->setAttribute('name', 'button-submit');
+//$form->get('submit')->setAttribute('value','sign in');
+?>
+
+<?php echo $this->partial('_form.phtml', ['form' => $form]); ?>
+<div class="create-account">
+    <p>
+        <!--        <a href="javascript:;" id="register-btn" class="uppercase">Create an account</a>-->
+    </p>
+</div>
+
+<?php //if ($this->enableRegistration) : ?>
+<?php //echo $this->translate('Not registered?'); ?><!-- <a href="--><?php //echo $this->url('zfcuser/register') . ($this->redirect ? '?redirect='.$this->escapeUrl($this->redirect) : '') ?><!--">--><?php //echo $this->translate('Sign up!'); ?><!--</a>-->
+<?php //endif; ?>
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function (event) {
+        document.getElementById('identity').focus();
+    });
+</script>

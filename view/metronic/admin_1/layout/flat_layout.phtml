@@ -1,0 +1,161 @@
+<?php echo $this->doctype() ?>
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <!--    --><?php //echo $this->headTitle('General Cavi Applicazione')->setSeparator(' - ')->setAutoEscape(false); ?>
+
+    <?php echo $this->headMeta()
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+    ?>
+
+    <!-- Le styles -->
+    <?php $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico']); ?>
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+    <?php //$this->headLink()->appendStylesheet('http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all');?>
+    <?php $this->headLink()->appendStylesheet($this->url('assets') . 'metronic/theme/assets/global/plugins/font-awesome/css/font-awesome.min.css')
+        ->appendStylesheet($this->url('assets') . 'metronic/theme/assets/global/plugins/simple-line-icons/simple-line-icons.min.css')
+        ->appendStylesheet($this->url('assets') . 'metronic/theme/assets/global/plugins/bootstrap/css/bootstrap.min.css')
+        ->appendStylesheet($this->url('assets') . 'metronic/theme/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css'); ?>
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <?php $this->headLink()->appendStylesheet($this->url('assets') . 'metronic/theme/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css')
+        ->appendStylesheet($this->url('assets') . 'metronic/theme/assets/global/plugins/morris/morris.css')
+        ->appendStylesheet($this->url('assets') . 'metronic/theme/assets/global/plugins/fullcalendar/fullcalendar.min.css')
+        ->appendStylesheet($this->url('assets') . 'metronic/theme/assets/global/plugins/jqvmap/jqvmap/jqvmap.css'); ?>
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <?php $this->headLink()->appendStylesheet($this->url('assets') . 'metronic/theme/assets/global/css/components.min.css', 'all', true, array('id' => 'style_components'))
+        ->appendStylesheet($this->url('assets') . 'metronic/theme/assets/global/css/plugins.min.css'); ?>
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <?php $this->headLink()->appendStylesheet($this->url('assets') . 'metronic/theme/assets/layouts/layout/css/layout.min.css')
+        ->appendStylesheet($this->url('assets') . 'metronic/theme/assets/layouts/layout/css/themes/darkblue.min.css', 'all', true, array('id' => 'style_color'))
+        ->appendStylesheet($this->url('assets') . 'metronic/theme/assets/layouts/layout/css/custom.min.css'); ?>
+    <!-- END THEME LAYOUT STYLES -->
+    <?php echo $this->headLink(); ?>
+
+    <!-- Scripts -->
+    <!-- BEGIN THEME LAYOUT SCRIPTS -->
+    <?php $this->headScript()
+        ->prependFile($this->url('assets') . 'metronic/theme/assets/layouts/layout/scripts/layout.min.js', 'text/javascript')
+    ?>
+    <!-- BEGIN THEME GLOBAL SCRIPTS -->
+    <?php $this->headScript()
+        ->prependFile($this->url('assets') . 'metronic/theme/assets/global/scripts/app.min.js', 'text/javascript');
+    ?>
+    <!-- END THEME GLOBAL SCRIPTS -->
+    <!-- BEGIN GLOBAL PLUGINS -->
+    <?php $this->headScript()
+        ->prependFile($this->url('assets') . 'metronic/theme/assets/global/scripts/app.min.js', 'text/javascript');
+    ?>
+    <!-- END GLOBAL PLUGINS -->
+    <?php $this->headScript()
+        ->prependFile($this->url('assets') . 'metronic/theme/assets/global/plugins/ie8.fix.min.js', 'text/javascript', array('conditional' => 'lt IE 9'))
+        ->prependFile($this->url('assets') . 'metronic/theme/assets/global/plugins/excanvas.min.js', 'text/javascript', array('conditional' => 'lt IE 9'))
+        ->prependFile($this->url('assets') . 'metronic/theme/assets/global/plugins/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9'));
+    ?>
+    <!-- BEGIN CORE PLUGINS -->
+    <?php $this->headScript()
+        ->prependFile($this->url('assets') . 'metronic/theme/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js', 'text/javascript')
+        ->prependFile($this->url('assets') . 'metronic/theme/assets/global/plugins/jquery.blockui.min.js', 'text/javascript')
+        ->prependFile($this->url('assets') . 'metronic/theme/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js', 'text/javascript')
+        ->prependFile($this->url('assets') . 'metronic/theme/assets/global/plugins/js.cookie.min.js', 'text/javascript')
+        ->prependFile($this->url('assets') . 'metronic/theme/assets/global/plugins/bootstrap/js/bootstrap.min.js', 'text/javascript')
+        ->prependFile($this->url('assets') . 'metronic/theme/assets/global/plugins/jquery.min.js', 'text/javascript');
+    ?>
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <!--    --><?php //echo $this->headScript()
+    //        ->prependFile($this->basePath().'pages/scripts/dashboard.min.js'), 'text/javascript');
+    //    ?>
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <!-- END THEME LAYOUT SCRIPTS -->
+    <?php echo $this->headScript(); ?>
+    <?php echo $this->inlineScript(); ?>
+    <style type="text/css">
+        @media (min-width: 992px) {
+            .page-content-wrapper .page-content {
+                margin-left: 0 !important;
+            }
+
+            .only-mobile {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .only-mobile {
+                display: block;
+            }
+
+            .no-mobile {
+                display: none;
+            }
+
+            .page-header.navbar .menu-toggler.responsive-toggler {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+<div class="page-wrapper">
+    <!-- BEGIN HEADER -->
+    <div class="page-header navbar navbar-fixed-top">
+        <!-- BEGIN HEADER INNER -->
+        <div class="page-header-inner ">
+            <!-- BEGIN LOGO -->
+            <div class="page-logo">
+                <a href="<?= $this->url('home'); ?>">
+                    <div style="font-size: 1.2em;font-weight: bold; color: white; margin-top: 1em">GENERAL<span
+                                style="color: blue">CAVI</span></div>
+                </a>
+            </div>
+            <!-- END LOGO -->
+            <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+            <a href="javascript:" class="menu-toggler responsive-toggler" data-toggle="collapse"
+               data-target=".navbar-collapse">
+                <span></span>
+            </a>
+        </div>
+    </div>
+
+    <!-- END HEADER -->
+    <!-- BEGIN HEADER & CONTENT DIVIDER -->
+    <div class="clearfix"></div>
+    <!-- END HEADER & CONTENT DIVIDER -->
+    <!-- BEGIN CONTAINER -->
+    <div class="page-container">
+        <div class="page-content-wrapper">
+            <!-- BEGIN CONTENT BODY -->
+            <div class="page-content" style="min-height: 20000px">
+                <?php echo $this->content ?>
+            </div>
+            <!-- END CONTENT BODY -->
+        </div>
+        <!-- END CONTENT -->
+        <!-- END CONTAINER -->
+        <!-- BEGIN FOOTER -->
+    <div class="page-footer">
+        <div class="page-footer-inner"> 2017 &copy; General Cavi        </div>
+        <div class="scroll-to-top">
+            <i class="icon-arrow-up"></i>
+        </div>
+    </div>
+        <!-- END FOOTER -->
+</div>
+    <?php echo $this->inlineScript() ?>
+
+</body>
+
+
+</html>

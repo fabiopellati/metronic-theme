@@ -1,0 +1,111 @@
+<?php
+/**
+ * $this->container è un ZendNavigation
+ */
+
+foreach ($this->container as $p1) { ?>
+    <?php if ($p1->get('heading') != '') { ?>
+        <li class="heading">
+            <h3 class="uppercase"><?= $p1->get('heading') ?></h3>
+        </li>
+    <?php } ?>
+    <?php
+    $p1_active = '';
+    if ($p1->isActive()) {
+        $p1_active = 'active';
+        if (count($p1->getPages()) > 0) {
+            $p1_active .= 'open';
+
+        }
+    }
+    ?>
+<li class="nav-item <?= $p1_active ?>">
+    <?php if (count($p1->getPages()) == 0) { ?>
+        <li class="nav-item">
+            <a href="<?= $p1->getHref() ?>" class="nav-link ">
+                <?php if ($p1->get('icon') != '') { ?>
+                    <i class="<?= $p1->get('icon') ?>"></i>
+                <?php } ?>
+                <span class="title"><?= $p1->getLabel() ?></span>
+            </a>
+        </li>
+    <?php } else { ?>
+        <a href="<?= $p1->getHref() ?>" class="nav-link nav-toggle">
+            <?php if ($p1->get('icon') != '') { ?>
+                <i class="<?= $p1->get('icon') ?>"></i>
+            <?php } ?>
+            <span class="title"><?= $p1->getLabel() ?></span>
+            <span class="arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <?php foreach ($p1->getPages() as $p2) {
+                $p2_active = '';
+                if ($p2->isActive()) {
+                    $p2_active = 'active';
+                    if (count($p2->getPages()) > 0) {
+                        $p2_active .= 'open';
+                    }
+                }
+                ?>
+
+            <li class="nav-item <?= $p2_active ?>">
+                <?php if (count($p2->getPages()) == 0) { ?>
+                    <li class="nav-item">
+                        <a href="<?= $p2->getHref() ?>" class="nav-link ">
+                            <?php if ($p2->get('icon') != '') { ?>
+                                <i class="<?= $p2->get('icon') ?>"></i>
+                            <?php } ?>
+                            <span class="title"><?= $p2->getLabel() ?></span>
+                        </a>
+                    </li>
+                <?php } else { ?>
+                    <a href="<?= $p2->getHref() ?>" class="nav-link nav-toggle">
+                        <?php if ($p2->get('icon') != '') { ?>
+                            <i class="<?= $p2->get('icon') ?>"></i>
+                        <?php } ?>
+                        <span class="title"><?= $p2->getLabel() ?></span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <?php foreach ($p2->getPages() as $p3) {
+                            $p3_active = '';
+                            if ($p3->isActive()) {
+                                $p3_active = 'active';
+                                if (count($p3->getPages()) > 0) {
+                                    $p3_active .= 'open';
+
+                                }
+                            }
+                            ?>
+                        <li class="nav-item <?= $p3_active ?>">
+                            <?php if (count($p3->getPages()) == 0 && false) { ?>
+                                <li class="nav-item">
+                                    <a href="<?= $p3->getHref() ?>" class="nav-link ">
+                                        <?php if ($p3->get('icon') != '') { ?>
+                                            <i class="<?= $p3->get('icon') ?>"></i>
+                                        <?php } ?>
+                                        <span class="title"><?= $p3->getLabel() ?></span>
+                                    </a>
+                                </li>
+                            <?php } else { ?>
+                                <a href="<?= $p3->getHref() ?>" class="nav-link nav-toggle">
+                                    <?php if ($p3->get('icon') != '') { ?>
+                                        <i class="<?= $p3->get('icon') ?>"></i>
+                                    <?php } ?>
+                                    <span class="title"><?= $p3->getLabel() ?></span>
+                                    <span class="arrow"></span>
+                                </a>
+                            <?php } ?>
+                            </li>
+                        <?php } ?>
+
+                    </ul>
+                <?php } ?>
+                </li>
+            <?php } ?>
+
+        </ul>
+    <?php } ?>
+    </li>
+<?php } ?>
+

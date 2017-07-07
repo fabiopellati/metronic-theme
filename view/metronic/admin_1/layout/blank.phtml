@@ -1,0 +1,34 @@
+<?php echo $this->doctype() ?>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--    --><?php //echo $this->headTitle('General Cavi Applicazione')->setSeparator(' - ')->setAutoEscape(false); ?>
+
+
+    <!-- Le styles -->
+    <?php $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico']); ?>
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+    <?php $this->headScript()
+        ->prependFile($this->url('assets') . 'metronic/theme/assets/global/plugins/jquery.min.js', 'text/javascript');
+    ?>
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <!--    --><?php //echo $this->headScript()
+    //        ->prependFile($this->basePath().'pages/scripts/dashboard.min.js'), 'text/javascript');
+    //    ?>
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <!-- END THEME LAYOUT SCRIPTS -->
+    <?php echo $this->headScript(); ?>
+    <?php echo $this->inlineScript(); ?>
+
+</head>
+
+<body>
+<?php echo $this->content ?>
+<?php echo $this->inlineScript() ?>
+
+</body>
+
+
+</html>
