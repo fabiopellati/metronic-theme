@@ -16,7 +16,7 @@ return [
             'assets' => [
                 'type' => 'Zend\Router\Http\Literal',
                 'options' => [
-                    'route' => '',
+                    'route' => '/',
                 ],
             ]
         ]
