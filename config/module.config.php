@@ -13,10 +13,10 @@ return [
      */
     'router' => [
         'routes' => [
-            'assets' => [
+            'assets-metronic' => [
                 'type' => 'Zend\Router\Http\Literal',
                 'options' => [
-                    'route' => '/',
+                    'route' => '/assets/metronic',
                 ],
             ]
         ]

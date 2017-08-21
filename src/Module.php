@@ -62,15 +62,15 @@ class Module
             if ($renderer instanceof PhpRenderer && !isset($options['has_parent'])
                 && $captured_to === 'content'
             ) {
-                $assets = $renderer->plugin('Url')->__invoke('assets');
-                $base_path = $renderer->plugin('BasePath')->__invoke('assets');
+                $assets = $renderer->plugin('Url')->__invoke('assets-metronic');
+//                $base_path = $renderer->plugin('BasePath')->__invoke($assets);
                 $script = <<<JS
                 if(typeof App == 'undefined'){
                     var App={};
                 }
                 App.assets = "$assets";
-                App.baseUrl = "$base_path";
-                App.setAssetsPath( App.assets+ mmetronic-themetheme);
+                // App.baseUrl = "$base_path";
+                App.setAssetsPath( App.assets+ "/assets/");
 
 JS;
                 $renderer->plugin('HeadScript')->appendScript($script, 'text/javascript');
