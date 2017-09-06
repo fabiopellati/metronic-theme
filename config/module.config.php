@@ -41,6 +41,7 @@ return [
         'exception_template' => 'error/index',
         'template_map' => [
             'layout/layout' => __DIR__ . "/../view/$theme/layout/layout.phtml",
+            'layout/flat_layout' => __DIR__ . "/../view/$theme/layout/flat_layout.phtml",
             'layout/login' => __DIR__ . "/../view/$theme/layout/login.phtml",
             'error/404' => __DIR__ . "/../view/$theme/error/404.phtml",
             'error/index' => __DIR__ . "/../view/$theme/error/index.phtml",
