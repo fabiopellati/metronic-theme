@@ -47,6 +47,8 @@ return [
             'error/index' => __DIR__ . "/../view/$theme/error/index.phtml",
             'partials/sidebar_menu' => __DIR__ . "/../view/$theme/partials/sidebar.phtml",
             'partials/breadcrumbs' => __DIR__ . "/../view/$theme/partials/breadcrumbs.phtml",
+            'partials/button_menu' => __DIR__ . "/../view/$theme/partials/button_menu.phtml",
+
         ],
         'template_path_stack' => [
             'standard' => __DIR__ . '/../view/',

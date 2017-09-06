@@ -1,0 +1,33 @@
+<?php
+/**
+ * $this->container è un ZendNavigation
+ */
+
+foreach ($this->container as $p1) { ?>
+    <?php if ($p1->get('heading') != '') { ?>
+        <div class="heading">
+            <h3 class="uppercase"><?= $p1->get('heading') ?></h3>
+        </div>
+    <?php } ?>
+    <?php
+    $p1_active = '';
+    if ($p1->isActive()) {
+        $p1_active = 'active';
+        if (count($p1->getPages()) > 0) {
+            $p1_active .= 'open';
+
+        }
+    }
+    ?>
+        <a href="<?= $p1->getHref() ?>" class="icon-btn ">
+            <?php if ($p1->get('icon') != '') { ?>
+                <i class="<?= $p1->get('icon') ?>"></i>
+            <?php } ?>
+            <div> <?= $p1->getLabel() ?> </div>
+            <?php if ($p1->get('badge') != '' && $p1->get('badge-class') != '') { ?>
+                <span class="badge <?= $p1->get('badge-class') ?>"> <?= $p1->get('badge') ?> </span>
+            <?php } ?>
+
+        </a>
+<?php } ?>
+
