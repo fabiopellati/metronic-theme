@@ -69,7 +69,7 @@ class Module
                     var App={};
                 }
                 App.assets = "$assets";
-                // App.baseUrl = "$base_path";
+                // App.baseUrl = "base_path";
                 App.setAssetsPath( App.assets+ "/assets/");
 
 JS;
