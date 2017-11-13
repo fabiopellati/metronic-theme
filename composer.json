@@ -11,9 +11,11 @@
   "minimum-stability": "stable",
   "require": {
     "zendframework/zend-view": "^2.9.0",
-    "zendframework/zend-test": "^3.0",
     "rwoverdijk/assetmanager": "^1.7",
     "zendframework/zend-navigation": "^2.8.2"
+  },
+  "require-dev": {
+    "zendframework/zend-test": "^3.0"
 
   },
   "autoload": {
