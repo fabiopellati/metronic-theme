@@ -1,7 +1,6 @@
 {
   "name": "fabiopellati/metronic-theme",
   "description": "elementi di view per l'implementazione del tema metronic",
-  "minimum-stability": "stable",
   "license": "proprietary",
   "authors": [
     {
@@ -9,6 +8,7 @@
       "email": "fabio.pellati@gmail.com"
     }
   ],
+  "minimum-stability": "stable",
   "require": {
     "zendframework/zend-view": "^2.9.0",
     "zendframework/zend-test": "^3.0",
