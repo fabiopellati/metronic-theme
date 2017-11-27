@@ -1,24 +1,25 @@
 <?php
 /**
- * $this->container è un ZendNavigation
+ * @var $container \Zend\Navigation\Navigation
  */
+$container = $this->container;
+foreach ($container as $p1) { ?>
+    <?php if ($this->navigation()->accept($p1)) { ?>
+        <?php if ($p1->get('heading') != '') { ?>
+            <div class="heading">
+                <h3 class="uppercase"><?= $p1->get('heading') ?></h3>
+            </div>
+        <?php } ?>
+        <?php
+        $p1_active = '';
+        if ($p1->isActive()) {
+            $p1_active = 'active';
+            if (count($p1->getPages()) > 0) {
+                $p1_active .= 'open';
 
-foreach ($this->container as $p1) { ?>
-    <?php if ($p1->get('heading') != '') { ?>
-        <div class="heading">
-            <h3 class="uppercase"><?= $p1->get('heading') ?></h3>
-        </div>
-    <?php } ?>
-    <?php
-    $p1_active = '';
-    if ($p1->isActive()) {
-        $p1_active = 'active';
-        if (count($p1->getPages()) > 0) {
-            $p1_active .= 'open';
-
+            }
         }
-    }
-    ?>
+        ?>
         <a href="<?= $p1->getHref() ?>" class="icon-btn ">
             <?php if ($p1->get('icon') != '') { ?>
                 <i class="<?= $p1->get('icon') ?>"></i>
@@ -29,5 +30,6 @@ foreach ($this->container as $p1) { ?>
             <?php } ?>
 
         </a>
+    <?php } ?>
 <?php } ?>
 
