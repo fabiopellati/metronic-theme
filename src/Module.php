@@ -65,11 +65,8 @@ class Module
                 $assets = $renderer->plugin('Url')->__invoke('assets-metronic');
 //                $base_path = $renderer->plugin('BasePath')->__invoke($assets);
                 $script = <<<JS
-                if(typeof App == 'undefined'){
-                    var App={};
-                }
+                var App =  App || {};
                 App.assets = "$assets";
-                // App.baseUrl = "base_path";
                 App.setAssetsPath( App.assets+ "/assets/");
 
 JS;
