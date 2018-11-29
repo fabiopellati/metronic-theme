@@ -20,7 +20,7 @@ foreach ($container as $p1) { ?>
             }
         }
         ?>
-        <a href="<?= $p1->getHref() ?>" class="icon-btn ">
+    <a href="<?= $p1->getHref() ?>" class="icon-btn <?= $p1_active; ?>">
             <?php if ($p1->get('icon') != '') { ?>
                 <i class="<?= $p1->get('icon') ?>"></i>
             <?php } ?>
