@@ -391,14 +391,18 @@
         <li class="dropdown dropdown-quick-sidebar-toggler">
             <?php
             try {
-                $logoutUrl = $this->url('user/logout');
+                $logoutUrl = $this->url('user/logout')??'';
+                if(!empty($logoutUrl)){
+                  ?>
+                  <a href="<?php echo $logoutUrl; ?>" class="dropdown-toggle">
+                    <i class="icon-logout"></i>
+                  </a>
+                    <?php
+                }
             } catch (\Exception $e) {
 
             }
             ?>
-            <a href="<?php echo $logoutUrl; ?>" class="dropdown-toggle">
-                <i class="icon-logout"></i>
-            </a>
         </li>
         <!-- END QUICK SIDEBAR TOGGLER -->
     </ul>
