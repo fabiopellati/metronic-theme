@@ -7,11 +7,13 @@
 
 namespace MetronicTheme\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
+use DateTime;
+use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\View\Model\ViewModel;
 
-class ElementsController extends AbstractActionController
-implements ElementsControllerInterface
+class ElementsController
+    extends AbstractActionController
+    implements ElementsControllerInterface
 {
     public function mainAction()
     {
@@ -44,8 +46,8 @@ implements ElementsControllerInterface
     }
     public function footerAction()
     {
-        $date=new \DateTime();
-        $copyright=$date->format('Y'). '&copy; Fabio Pellati';
+        $date = new DateTime();
+        $copyright = $date->format('Y') . '&copy; Fabio Pellati';
         return new ViewModel(['logo1'=>$copyright,
                              ]);
     }

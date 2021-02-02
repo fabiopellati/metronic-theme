@@ -7,10 +7,10 @@
 
 namespace MetronicTheme;
 
-use Zend\Mvc\MvcEvent;
-use Zend\View\Model\ViewModel;
-use Zend\View\Renderer\PhpRenderer;
-use Zend\View\ViewEvent;
+use Laminas\Mvc\MvcEvent;
+use Laminas\View\Model\ViewModel;
+use Laminas\View\Renderer\PhpRenderer;
+use Laminas\View\ViewEvent;
 
 class Module
 {
@@ -18,7 +18,6 @@ class Module
     {
         return include __DIR__ . '/../config/module.config.php';
     }
-
 
     public function onBootstrap(MvcEvent $e)
     {
@@ -55,16 +54,19 @@ class Module
          * aggiunta javascript di inizializzazione
          */
         $sharedEvents = $em->getSharedManager();
-        $sharedEvents->attach('Zend\View\View', ViewEvent::EVENT_RENDERER_POST, function (ViewEvent $viewEvent) {
-            $renderer = $viewEvent->getRenderer();
-            $options = $viewEvent->getModel()->getOptions();
-            $captured_to = $viewEvent->getModel()->captureTo();
-            if ($renderer instanceof PhpRenderer && !isset($options['has_parent'])
-                && $captured_to === 'content'
-            ) {
-                $assets = $renderer->plugin('Url')->__invoke('assets-metronic');
+        $sharedEvents->attach(
+            'Laminas\View\View',
+            ViewEvent::EVENT_RENDERER_POST,
+            function (ViewEvent $viewEvent) {
+                $renderer = $viewEvent->getRenderer();
+                $options = $viewEvent->getModel()->getOptions();
+                $captured_to = $viewEvent->getModel()->captureTo();
+                if ($renderer instanceof PhpRenderer && !isset($options['has_parent'])
+                    && $captured_to === 'content'
+                ) {
+                    $assets = $renderer->plugin('Url')->__invoke('assets-metronic');
 //                $base_path = $renderer->plugin('BasePath')->__invoke($assets);
-                $script = <<<JS
+                    $script = <<<JS
                 var App =  App || {};
                 App.assets = "$assets";
                 App.setAssetsPath( App.assets+ "/assets/");

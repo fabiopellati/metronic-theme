@@ -7,17 +7,17 @@
         <span> Enter any username and password. </span>
     </div>
 <?php foreach ($form as $element): ?>
-    <?php if (!$element instanceof Zend\Form\Element\Button): ?>
-        <div class="form-group">
-            <?php if ($element->getLabel() != null) : ?>
-                <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-                <label class="control-label visible-ie8 visible-ie9"><?php echo $this->formLabel($element) ?></label>
-            <?php endif ?>
-            <?php echo $this->formElement($element) . $this->formElementErrors($element) ?>
-        </div>
+    <?php if (!$element instanceof Laminas\Form\Element\Button): ?>
+    <div class="form-group">
+        <?php if ($element->getLabel() != null) : ?>
+          <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+          <label class="control-label visible-ie8 visible-ie9"><?php echo $this->formLabel($element) ?></label>
+        <?php endif ?>
+        <?php echo $this->formElement($element) . $this->formElementErrors($element) ?>
+    </div>
     <?php else: ?>
-        <div class="form-actions">
-            <?php echo $this->formButton($element) ?>
+    <div class="form-actions">
+        <?php echo $this->formButton($element) ?>
         </div>
     <?php endif ?>
 <?php endforeach ?>

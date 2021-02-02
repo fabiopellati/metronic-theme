@@ -119,23 +119,23 @@
         <?= $this->sideBar; ?>
         <!-- END SIDEBAR -->
         <!-- BEGIN CONTENT -->
-
-        <div class="page-content-wrapper">
-
-
-            <!-- BEGIN CONTENT BODY -->
-            <div class="page-content" style="min-height: 20000px">
-                <div class="page-bar">
-                 <?php echo $this->navigation('Zend\Navigation\Breadcrumbs')->breadcrumbs()->setPartial('partials/breadcrumbs')->render(); ?>
-                </div>
-                <?php echo $this->content ?>
-            </div>
-            <!-- END CONTENT BODY -->
+      <div class="page-content-wrapper">
+        <!-- BEGIN CONTENT BODY -->
+        <div class="page-content" style="min-height: 20000px">
+          <div class="page-bar">
+              <?php echo $this->navigation('Laminas\Navigation\Breadcrumbs')->breadcrumbs()->setPartial(
+                  'partials/breadcrumbs'
+              )->render()
+              ; ?>
+          </div>
+            <?php echo $this->content ?>
         </div>
+        <!-- END CONTENT BODY -->
+      </div>
         <!-- END CONTENT -->
         <!-- END CONTAINER -->
         <!-- BEGIN FOOTER -->
-                <?php echo $this->footer ?>
+        <?php echo $this->footer ?>
         <!-- END FOOTER -->
 </div>
     <?php echo $this->inlineScript() ?>
